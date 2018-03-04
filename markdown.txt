@@ -1,0 +1,52 @@
+拷贝继承，子类继承父类的实例就不会改动父类的原型链上的方法和属性了；
+但是子类的实例也还是父类的实例，instanceof方法就知道
+function SubType (age){
+		SuperType.call(this,name);
+		this.age= age;
+		this.sayAge = function (){
+			alert(this.age);
+			}
+		}
+		(function(){
+			var Temp =function (){};
+			Temp.prototype=SuperType.prototype;
+			Subtype.prototype=new Temp();
+		})();
+
+响应式布局与自适应布局：
+自适应的目的是在不同分辨率的不同设备上面显示相同的页面。
+响应式的概念应该是覆盖了自适应，但是包括的东西更多了。响应式布局可以根据屏幕的大小自动的调整页面的展现方式，以及布局。
+<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 400px)" href="tinyScreen.css" />
+
+status 属性可设置或返回窗口状态栏中的文本。
+window.status='状态栏信息'
+
+window -- document/history/frames/navigator/location/screen
+	  document -- location
+
+null instanceof Object 是false
+
+DOCTYPE标签是一种标准通用标记语言的文档类型声明，它的目的是要告诉标准通用标记语言解析器，它应该使用什么样的文档类型定义（DTD）来解析文档。
+
+var e=Math.pow(2,2);
+var s=e-100;
+var count=0;
+for(var i=s;i<=e;i++){
+ count++;
+}
+console.log(count);
+
+var length=10;
+function fn(){
+ console.log(this.length);
+}
+var obj={
+ length:5,
+ method:function(fn){
+  fn();
+  arguments[0]();
+ }
+};
+obj.method(fn,1);
+
+javascript是面向对象的.
