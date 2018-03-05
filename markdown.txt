@@ -1,3 +1,134 @@
+Object.is(a,b)  判断a是否是b
+Object.assign(obj1,obj2)  合并对象，只是浅拷贝
+let des=Object.getOwnPropertyDescriptor(source,key);  获取对象的属性描述
+Object.defineProperty(target,key,value); 设置对象的属性
+[].concat(arr1,arr2,arr3)  合并几个数组
+switch语句必须带有default分支
+obj.hasOwnProperty()  永远不会去查找原型
+var arr=['1'];
+arr[arr.length]='2';
+arr.length=1;
+console.log(arr[arr.length]);  
+html5新特性：1、语义化；2、本地存储性；3、设备访问性；4、连接特性（WebSockets）；
+	     5、网页多媒体特性；6、三维与图形与特效（SVG、Canvas、CSS3）；7、性能与集成特性
+APP CHACHE浏览器缓存 <html manifest='index.manifest'>
+文件清单
+CACHE MANIFEST
+CACHE:
+theme.css
+logo.gif
+main.js
+
+NETWORK:
+login.asp
+
+FALLBACK:
+/html5/ /404.html
+
+AMD --> RequireJS   
+define(['./a','./b'],function(){// 依赖必须一开始就写好
+ a.doSomething()
+ // 此处略去 100 行
+ b.doSomething()
+ ...
+})
+
+CDM --> SeaJS
+define(function(require,exports,module){
+ var a=require('./a');
+ a.doSomething();
+ // 此处略去 100 行
+ var b=require('./b');
+ b.doSomething();
+ ...
+})
+
+‘1’-‘1’；‘1’-‘1’+‘1’；
+
+'use strict' 测试在严格模式和非严格模式下的输出
+(function(x){delete x;return x;})(1)
+
+var food='sushi';
+(function(){
+  if(typeof food==='undefined'){
+    var food='huacai';
+    console.log('eat'+food);
+  }else{
+    console.log('eat'+food);
+  }
+})()//声明前置
+
+Math.ceil(7/2);Math.floor(7/2);Math.round(7/2);(7/2).toFixed(0);
+
+CORS是W3c工作草案，它定义了在跨域访问资源时浏览器和服务器之间如何通信。CORS背后的基本思想是使用自定义的HTTP头部允许浏览器和服务器相互了解对方，从而决定请求或响应成功与否。
+JSONP与CORS对比
+都能解决 Ajax直接请求普通文件存在跨域无权限访问的问题
+1、JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求
+2、使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理
+3、JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS
+
+WEB性能优化
+1、减少HTTP请求
+减少图片的请求、减少脚本文件与样式表的请求
+图片的减少通常有两种方式：css sprites、内联图片、IconFont。
+2、页面内部优化
+样式表放在顶部、脚本文件放在底部、避免css表达式、把脚本的样式表放在外部、移除重复脚本
+3、启用缓存
+4、减少下载量--开启gzip压缩
+5、优化网络连接
+使用CDN加速、减少DNS查找、避免重定向
+
+CSS的单位
+px,em,rem,mm,ex,pt,pc,vw,vh
+
+src与href
+href标识超文本引用，用在link和a等元素上，href是引用和页面关联，是在当前元素和引用资源之间建立联系
+src表示引用资源，表示替换当前元素，用在img，script，iframe上，src是页面内容不可缺少的一部分
+
+上传（图片）
+1)表单上传，form -->enctype="multipart/form-data",type="post";
+input -->type="file"
+input  -->type="submit"
+2)ajax异步无刷新上传，input -->type="file" id="test" name="test",input  -->type="button" 
+
+var formData=new FormData($("#test"));
+$.ajax({
+	url:"/test.do",
+	type:"POST",
+	data:formDate,
+	processData:false,
+	contentType:false,
+	success:function(response){
+
+	}
+})
+3）Flash上传
+4）截图粘贴上传
+5）拖拽上传
+
+不同浏览器对应的浏览器内核
+chrome,firefox,ie9,Opare;webkit,Gecko,Tride,Presto
+
+		function Foo(){
+			getName=function(){console.log(1);};
+			return this;
+		};
+		Foo.getName=function(){console.log(2);};
+		Foo.prototype.getName=function(){console.log(3);};
+		var getName=function(){console.log(4);};
+		function getName(){console.log(5);};
+
+		Foo.getName();//2
+		getName();//4
+		Foo().getName();//1
+		getName();//1
+		new Foo.getName();//2
+		new Foo().getName();//3
+		new new Foo().getName();//3
+2,4,1,1,2,3,3
+
+onafterpaste 粘贴后出发
+
 拷贝继承，子类继承父类的实例就不会改动父类的原型链上的方法和属性了；
 但是子类的实例也还是父类的实例，instanceof方法就知道
 function SubType (age){
