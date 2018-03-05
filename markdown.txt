@@ -181,3 +181,147 @@ var obj={
 obj.method(fn,1);
 
 javascript是面向对象的.
+
+XHTML与HTML的区别：
+XHTML 元素必须被正确地嵌套。
+XHTML 元素必须被关闭。
+标签名必须用小写字母。
+XHTML 文档必须拥有根元素。
+
+CSS3新特性：
+1.CSS3的选择器
+  1）E:last-child 匹配父元素的最后一个子元素E。
+  2）E:nth-child(n)匹配父元素的第n个子元素E。
+  3）E:nth-last-child(n) CSS3 匹配父元素的倒数第n个子元素E。
+2. @Font-face 特性
+3. 圆角
+4. 多列布局 （multi-column layout）---兼容性不好，还不够成熟。还不能用在实际项目中。
+5.阴影（Shadow）
+6.CSS3 的渐变效果 
+7.css弹性盒子模型
+8.CSS3制作特效
+  1) Transition 对象变换时的过渡效果
+  缩写方式：
+  transition:border-color .5s ease-in .1s, background-color .5s ease-in .1s, color .5s ease-in .1s;
+  2) Transforms 2D转换效果
+  主要包括 translate（水平移动）、rotate（旋转）、scale（伸缩）、skew（倾斜）
+  3) Animation动画特效
+  
+添加元素：
+  Document.createElement() // 创建元素
+  let element = document.createElement(tagName[, options])
+
+  Document.createTextNode() // 创建一个新的文本节点
+  var text = document.createTextNode(data)
+
+  Document.createAttribute() // 创建并返回一个新的属性节点
+  attribute = document.createAttribute(name)
+
+  Document.createComment() // 创建并返回一个注释节点
+  var commentNode = document.createComment(data)
+  
+  Document.createDocumentFragment() // 创建一个新的空的文档片段
+  var docFragment = document.createDocumentFragment()
+
+  Node.appendChild() // 将一个节点添加到指定父节点的子节点列表末尾
+  var child = node.appendChild(child)
+
+  Element.classList.add() // 添加指定的类值class
+  elementNodeReference.classList.add( String [, String] )
+
+  Document.write()  
+  Document.writeIn() // 将文本字符串写入打开的文档流
+  document.write(markup)
+  document.writeIn(line)
+  document.write()和writeIn()的区别是前者没有换行，而后者有换行。
+
+  Element.removeAttribute() // 从元素中删除指定的属性
+  element.removeAttribute(attrName)
+
+  Element.removeChild(）// 删除子元素
+  var oldChild = node.removeChild(child);OR element.removeChild(child);
+
+  ChildNode.remove() // 删除元素
+  elementNodeReference.remove()
+
+  Child.parentNode.removeChild(child) // 不确定父元素时可这样删除子元素
+  if (node.parentNode) {
+  //判断node是否在DOM树中
+    node.parentNode.removeChild(node);
+  }
+
+  Element.classList.remove() // 移除元素中一个或多个类名
+  elementNodeReference.classList.remove( String [,String] )
+
+  Node.innerText // 修改元素文本内容
+  Node.innerHTML =new content
+
+  Element.innerHTML // 设置或获取描述元素后代的HTML语句
+  const content = element.innerHTML;
+  // 返回时，内容包含描述所有元素后代的序列化HTML代码。
+  element.innerHTML = markup;
+  // 除所有元素的子节点，解析内容字符串，并将生成的节点分配给元素的子元素。
+
+  node.cloneNode() // 拷贝元素(包括所有属性和值)
+  var dupNode = node.cloneNode(deep)
+  <!--example-->
+  <body>
+  <ul id="myList1">
+      <li>iPhone</li>
+      <li>iPad</li>
+  </ul>
+  <ul id="myList2">
+      <li>Macbook</li>
+      <li>appleMusic</li >
+  </ul>
+  <button onclick="myFunction()">复制</button>
+  <script>
+  function myFunction(){
+      var itm=document.getElementById("myList2").lastChild;
+      var cln=itm.cloneNode(true);
+      document.getElementById("myList1").appendChild(cln);
+  }
+  </script>
+  </body>
+  <!--点击复制按钮，myList2中最后元素会复制到myList1中-->
+
+  Element.setAttribute() // 设置或者改变指定属性并指定值
+  element.setAttribute(name, value)
+
+  style.property = new style // 修改元素CSS属性值
+  var title= document.querySelector("h1")
+  title.style.backgroundColor = "red" // h1背景色改为红色
+
+  Node.replaceChild() // 替换子节点
+  replacedNode = parentNode.replaceChild(newChild, oldChild)
+
+  attribute.getAttribute() // 返回元素的指定属性值
+  let attribute = element.getAttribute(attributeName)
+
+  Document.getElementsByClassName() // 返回一个节点列表（数组），包含了所有拥有指定 class 的子元素
+  var elements = document.getElementsByClassName(names); // or:
+  var elements = rootElement.getElementsByClassName(names);
+
+  Document.getElementsByName() // 返回带有指定名称的对象集合
+  elements = document.getElementsByName(name)
+
+  Document.getElementsByTagName() // 返回带有指定标签名的对象集合
+  var elements = document.getElementsByTagName(name)
+
+  Document.getElementById() // 返回对拥有指定 id 的第一个对象的引用
+  element = document.getElementById(id)
+
+  Document.querySelector() // 返回文档中匹配指定的CSS选择器的第一元素
+  element = document.querySelector(selectors) // 语法
+  //example
+  document.querySelector("#demo") // 获取文档中ID为demo的元素
+
+  Document.querySelectorAll() // 返回与指定的选择器组匹配的文档中的元素列表
+  elementList = document.querySelectorAll(selectors)
+
+function test(a){
+  argument[0]=2;
+  console.log(a);
+}
+test();//undefine
+
