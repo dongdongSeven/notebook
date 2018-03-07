@@ -325,3 +325,91 @@ function test(a){
 }
 test();//undefine
 
+背景弹窗
+.bg{position:fixed;left:0;top:0;width:100%;height:100%;overflow:auto;z-index:100;background:rgba();backdrop-filter:blur(10px);}
+.bg .wrapper{width:100%;min-width:100%;}
+.bg close_wrapper{width:50px;height:50px;margin:-50px auto 0;clear:both;}
+.bg .wrapper .content{padding-bottom:50px;}
+--文字--
+<div class='wrapper'>
+  <div class='line'></div>
+  <div class='text'></div>
+  <div class='line'></div>
+</div>
+.wrapper{display:flex;width:80%;}
+.wrapper .line{flex:1;position:relative;top:-6px;border-bottom:1px solid rgba(255,255,255,.2);}
+.wrapper .text{padding:0 12px;font-weight:700;font-size:14px;}
+
+获取页面所有的checkbox，不使用第三方库
+var inputs=document.getElementsByTagName("input");
+var arr=[];
+for(var i=0;i<inputs.length;i++){
+  if(inputs[i].type=='checkbox')
+    arr.push(inputs[i]);
+}
+
+var f=function g(){return 23;};
+typeof g();//g is not defined
+
+function fn(a){
+  console.log(a);
+  var a=2;
+  function a(){};
+  console.log(a);
+};
+fn(1);//函数声明优先于函数声明，但我第一次认为第一个输出是undefined；但输出的是function a(){};说明var a被略过了。
+
+var a=10;
+a.pro=10;
+console.log(a.pro+a);//NaN
+var s='hello';
+s.pro='world';
+console.log(s.pro+s);//undefinedhello
+
+console.log(typeof fn);//function原因同上上
+function fn(){};
+var fn;
+
+		function JSClass(){
+			this.m_Text='dongdongSeven';
+			this.m_Element=document.createElement('div');
+			this.m_Element.innerHTML=this.m_Text;
+			this.m_Element.addEventListener('click',this.func);//undefined
+			this.m_Element.addEventListener('click',this.func.bind(this));//dongdongSeven
+		}
+		JSClass.prototype.Render=function(){
+			document.body.appendChild(this.m_Element);
+		};
+		JSClass.prototype.func=function(){
+			console.log(this.m_Text);
+		};
+		var jc=new JSClass();
+		jc.Render();
+		jc.func();
+
+		(function(){
+			return console.log(typeof arguments);
+		})();//Object
+
+		if('a' in window){//注意书写'a'
+			var a=10;
+		};
+		console.log(a);
+
+		function test(obj){
+			obj.name='q';
+			obj=new Object();
+			obj.name='w';
+		}
+		var person=new Object();
+		test(person);
+		console.log(person.name);//'q'
+
+                //去掉字符串收尾的空白
+		str.replace(/(^\s*)|(\s*$)/);
+
+$("#test span")效率高于$("#test").find("span");
+
+寄生组合继承：父原型链增加东西，子原型实例能继承；子原型链增加东西，父原型实例不能继承；Cat.prototype.constructor=Cat;
+
+meta name="format-detection" content="telephone=no"  telephone=no就禁止了把数字转化为拨号链接！
