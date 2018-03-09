@@ -413,3 +413,40 @@ $("#test span")效率高于$("#test").find("span");
 寄生组合继承：父原型链增加东西，子原型实例能继承；子原型链增加东西，父原型实例不能继承；Cat.prototype.constructor=Cat;
 
 meta name="format-detection" content="telephone=no"  telephone=no就禁止了把数字转化为拨号链接！
+
+link与@import:
+区别：同时加载
+前者无兼容性，后者CSS2.1以下浏览器不支持
+Link支持使用javascript改变样式，后者不可
+
+IE与非IE的兼容写法
+var event=event||window.event;
+document.documentElement.clientWidth||document.body.clientWidth;
+var target=event.srcElement||event.target;
+
+IE和DOM事件流的区别：
+1、事件流的区别 
+IE采用冒泡型事件 Netscape使用捕获型事件 DOM使用先捕获后冒泡型事件 
+2、事件侦听函数的区别 
+IE使用: 
+[Object].attachEvent("on_name_of_event_handler", fnHandler); //绑定函数 
+[Object].detachEvent("on_name_of_event_handler", fnHandler); //移除绑定 
+
+DOM使用： 
+[Object].addEventListener("name_of_event", fnHandler, bCapture); //绑定函数 
+[Object].removeEventListener("name_of_event", fnHandler, bCapture); //移除绑定 
+
+javascript的本地对象，内置对象和宿主对象
+本地对象为Array,Object,RegExp等可以new实例化
+内置对象为gload,Math的等不可以实例化的
+宿主为浏览器自带的document,window等
+
+异步ajax的优缺点都有什么？
+优点：
+1、相对于同步ajax：不会造成UI卡死，用户体验好。
+2、相对于刷新页面，省流量。
+缺点：
+1、后退按钮失效
+2、多个请求同时出发时，由于回调时间不确定，会造成混乱，避免这种混乱需要复杂的判断机制。
+3、搜索引擎不友好。
+4、数据安全
