@@ -450,3 +450,11 @@ javascript的本地对象，内置对象和宿主对象
 2、多个请求同时出发时，由于回调时间不确定，会造成混乱，避免这种混乱需要复杂的判断机制。
 3、搜索引擎不友好。
 4、数据安全
+
+<meta name='renderer' content='webkit'/> 优先用webkit内核，现在浏览器一般是双核：webkit与IE
+<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1'/>让IE浏览使用最高级别的渲染，如果有
+<link rel='dns-prefetch' href='//static.360buyimg.com'/>DNS预解析crome就用它
+
+jquery:核心架构、事件委托、插件机制、兼容性（去jquery浏览量高的看看）
+页面布局、CSS盒模型、DOM事件、HTTP/HTTP2/HTTPS/WS、面向对象、原型链、通信（跨域，前后端）、安全（XSS）、算法
+三栏布局：float,position,flex,display:tabel-cell,网格
