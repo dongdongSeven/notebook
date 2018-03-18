@@ -457,4 +457,84 @@ javascript的本地对象，内置对象和宿主对象
 
 jquery:核心架构、事件委托、插件机制、兼容性（去jquery浏览量高的看看）
 页面布局、CSS盒模型、DOM事件、HTTP/HTTP2/HTTPS/WS、面向对象、原型链、通信（跨域，前后端）、安全（XSS）、算法
-三栏布局：float,position,flex,display:tabel-cell,网格
+三栏布局：float,position,flex,display:tabel-cell,grid网格
+
+CSS:1、绝对定位元素，当不指定top或bottom时，它会以本身的位置只进行左右定位；
+    2、绝对定位元素,当宽高不定时，指定top/bottom/left/right，其实就是给他定宽高；
+    3、绝对定位元素,当宽高确定时，指定top:0;bottom:0;margin:auto;或者left:0;right:0;margin:auto;就是上下或者左右居中。
+
+标准模型与IE模型：前者计算宽高不包括padding和border，而后者要；
+如何设置这两者模型：box-sizing:content-box/border-box.
+JS如何获取宽高:dom.style.width/height---只能获取内嵌样式，不能获取<style></style>和外联样式
+	      dom.currentStyle.width/height---只支持IE，最终样式
+	      dom.getComputedStyle(dom,null).width/height---火狐和谷歌都能支持
+	      dom.defaultView.getComputedStyle(dom,null).width/height---同上，更好
+
+创建BFC(就是不会因边距重叠问题而损失margin)：1、float不为none;2、position不为static/relative;3、display为inline/table/table-cell/table-row/table-column等;4、overflow:hidden/auto;
+应用：BFC元素不与flaot元素重叠；
+例子：
+<div class='fa' style='background-color:red;'>
+  <div class='left' style='float:left;width:100px;height:100px;background-color:green;'></div>
+  <div class='right' style='height:110px;overflow:auto;//关键background-color:yellow;'></div>
+</div>
+
+document.documentElement其实就是值<html></html>标签
+自定义事件:
+var eve=new Event('test');//只能自定义事件名
+dom.addEventListener('test',function(){
+console.log('test dispatch');
+},false);
+dom.dispatchEvent(eve);
+其中：CustomEvent对象和Event一样，不过可以多穿一个对象型的参数。
+
+event.preventDefault();
+event.stopPropagation();
+event.stopImmediatePropagation();//在一个dom身上同时绑定了两个事件，在某一个事件函数中加入这个方法就不会触发另一个事件函数；
+event.currentTarget;//当前绑定事件的元素，例如子元素触发了父元素的事件，那么就是指父元素。
+event.target/srcElement;目标元素
+
+HTTP协议的主要特点：
+简单快速（通过URL管理）、
+灵活（在每个HTTP头部都有一个数据类型，通过一个HTTP就能传递不同类型的数据）、
+无连接（每连接一次都会断开）、
+无状态（因为每次操作都是重新连接的）
+HTTP报文的组成部分
+请求报文（请求行（HTTP方法、页面地址、HTTP协议、版本）、请求头（key:value这些值，请求的内容是什么）、空行（分开请求头与请求行的）、请求行）、
+响应报文（状态行、响应头、空行、相应体）
+HTTP方法
+GET-->获取资源
+POST-->传输资源
+PUT-->更新资源
+DELETE-->删除资源
+HEAD-->获得报文首部
+POST和GET的区别
+1、GET在浏览器回退时是无害的，而POST会再次提交请求
+2、GET请求会被浏览器主动缓存，而POST不会，除非手动设置
+3、GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留
+4、GET请求在URL中传送的参数是有长度限制的，而POST没限制
+5、GET参数通过URL传得，POST放在Request body中
+6、GET产生的URL地址可以被收藏，而POST不可以
+7、GET请求只能进行rul编码，而POST支持多种编码方式
+8、对参数的数据类型，GET只接受ASC‖字符，而POST没有限制
+9、GET比POST更不安全，因为参数直接暴露在URL上，所以不能采用来传递敏感信息
+HTTP状态码
+1XX:指示信息--表示请求已接收，继续处理
+2XX:成功--表示请求已被成功接收
+3XX:重定向--要完成请求必须进行更进一步的操作
+4XX:客户端错误--请求有语法错误或者请求无法实现
+5XX:服务器错误--服务器未能实现合法的请求
+200、206客户发送了一个带有Range头的GET请求，服务器完成了它。（一般是视频或音频）
+301（所请求的页面已经转移至新的url）、302（所请求的页面已经临时转移至新的url）、304（缓存）
+400（客户端请求有语法错误）、401（请求未经授权）、403（对被请求页面的访问被禁止）、404（资源不存在）
+500（服务端错误）、503（服务端过载或当机）
+什么是持久连接
+HTTP协议采用“请求-应答”模式，当使用普通模式，即非Keep-Alive模式时，每个请求/应答客户和服务器都要建一个连接，完成之后立即断开连接（HTTP协议为无连接的协议）
+当使用Keep-Alive模式（又称持久连接、连接重用）时，Keep-Alive功能使客户端到服务器端的连接持久有效，当出现对服务器的后继请求时，Keep-Alive功能避免了建立或者重新建立连接。
+什么是管线化
+在使用持久连接的情况下，某个连接上消息的传递类似于
+请求1->响应1->请求2->响应2->请求3->响应3
+某个连接上的消息变成了类似于这样
+请求1->请求2->请求3->响应1->响应2->响应3     这样打包请求与响应
+1、管线化机制通过持久连接完成，仅HTTP/1.1支持此技术
+2、只有GET和HEAD请求可以进行管线化，而POST则有所限制
+3、初次创建连接时不应启动管线化机制，因为对方（服务器）不一定支持HTTP/1.1版本的协议
