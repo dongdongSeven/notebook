@@ -538,3 +538,50 @@ HTTP协议采用“请求-应答”模式，当使用普通模式，即非Keep-Alive模式时，每个请求/应
 1、管线化机制通过持久连接完成，仅HTTP/1.1支持此技术
 2、只有GET和HEAD请求可以进行管线化，而POST则有所限制
 3、初次创建连接时不应启动管线化机制，因为对方（服务器）不一定支持HTTP/1.1版本的协议
+
+原型链
+创建对象有几种方法：
+1、原型链类：
+  //字面量类
+var o1={name:'o1'};
+var o2=new Object({name:'o2'});
+//构造函数类，o3.__proto__指向的是M.prototype
+var M=function(name){this.name=name;}
+var o3=new M('o3');
+//Onject.create，o4是一个空对象，o4.__proto__指向的是P
+var P={name:'p'};
+var o4=Object.create(P);
+
+
+//下面是new的工作原理，先继承原型链，再用call加构造函数内的属性和方法
+var new2=function(fun){
+	var o=Object.create(fun.prototype);
+	var k=fun.call(o);
+	console.log(typeof k,'----'+k);
+	if(typeof k === 'object'){
+		console.log('object');
+		return k;
+	}else{
+		return o;
+	}
+}
+o9=new2(M);
+
+o2.__proto__===M.prototype;//true
+M.prototype.constructor===M;//true,构造函数的构造器就是自己
+M.__proto__===Function.prototype;//true,M也是对象，它的__proto__指向Function.prototype
+o2 instanceof M;o2 instanceof Object;//都是true
+o2.__proto__.constructor===M;//true
+o2._proto_.constructor===Object;//false
+所以用obj._proto_constructor判断实例所属更准确
+
+面向对象
+类的声明：
+1、构造函数；
+  function Animal(){this.name='name'};
+2、class
+  class Animal2{constructor(){this.name='name'}}
+继承：
+1、构造函数内call
+2、原型链
+3、组合方式
