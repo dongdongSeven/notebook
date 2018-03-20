@@ -575,13 +575,36 @@ o2.__proto__.constructor===M;//true
 o2._proto_.constructor===Object;//false
 所以用obj._proto_constructor判断实例所属更准确
 
-面向对象
-类的声明：
-1、构造函数；
-  function Animal(){this.name='name'};
-2、class
-  class Animal2{constructor(){this.name='name'}}
-继承：
-1、构造函数内call
-2、原型链
-3、组合方式
+面向对象：
+一、类与实例
+   1、类的声明
+   2、生成实例
+二、类与继承
+   1、如何实现继承
+   2、继承的几种方式
+
+通信类：
+什么是同源策略及限制？
+同协议、同域名、同端口；
+限制：
+1、Cookie、LocalStorage和indexDB无法读取
+2、DOM无法获取
+3、AJAX请求不能发送
+前后端如何通信？
+Ajax（同源）,webSocket（不受同源策略的限制）,CORS（支持同源与跨域通信）
+如何创建Ajax
+
+跨域通信的几种方式
+1、JSONP:
+例子：
+<script src='http://www.abc.com/?data=123&callback=jsonp'></script> 
+//可以传data参数；jsonp可换成其他函数名称；但必须与后台协商好返回此名称的函数；还必须在本地定义好此函数，后台返回回来才能直接执行；
+后台返回的格式是这样的：
+<script>
+  jsonp({data:1222,param:233});//回来就执行了
+</script>
+2、Hash（因为哈希改变，页面是不会变的，这就是它的跨越通信原理）、
+3、postMessage、
+4、WebScoket、
+5、CORS：
+   fetch(url,{method:'get'}).then(function(response){}).catch(function(err){})
