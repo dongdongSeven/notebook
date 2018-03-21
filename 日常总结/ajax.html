@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>ajax</title>
+	<title>ajax与几种跨域请求</title>
 </head>
 <body>
 	<script>
@@ -25,7 +25,7 @@
 		}
 		if(type==="GET"){
 			url=url+'?'+dataArr.join('&');
-			xhr.open(type,url.replace(/?$/g,''),true);
+			xhr.open(type,url.replace(/\?$/g,''),true);
 			xhr.send();
 		}
 		xhr.onload=function(){
