@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面性能</title>
+</head>
+<body>
+	提升页面性能的方法有哪些？
+	1、资源压缩合并（开启gzip压缩），减少HTTP请求
+	2、非核心代码异步加载-->异步加载的方式-->异步加载的区别
+	   异步加载的方式：动态脚本加载、defer、async
+	   异步加载的区别:1、defer是在HTML解析完之后才执行，如果是多个，按照加载的顺序依次执行
+	   				  2、async是在加载完成之后立即执行，如果是多个，执行顺序和加载顺序无关
+	3、利用浏览器缓存-->缓存的分类-->缓存的原理(最快提升性能)
+	   缓存的分类：1、强缓存（浏览器直接就从缓存中拿来用，若同时有一下两个，以后者为准）
+	   				  Expires Expires:Thu,21 jan 2017 23:39:02 GMT  (Expires--到期，服务器发的绝对时间对比本地浏览器的时间，在此时间之前不会再与服务器通信了额，直接从缓存中拿资源；偏差：服务器的时间与本地浏览器的时间有误差)
+	   				  Cache-Control Cache-Control:max-age=3600  （在拿到资源后，3600秒内，直接从缓存中拿资源不与服务器通信）
+	   			   2、协商缓存（浏览器会与服务器协商是否过期，还能不能用；Last-Modified上次修改时间；Etag内容是否改变）
+	   			      Last-Modified If-Modified-Since Last-Modified:Wed,26 jan 2017 00:35:11 GMT
+	   			      Etag If-Node-Match
+	4、使用CDN（在有缓存时，第一次加载效果明显）
+	5、预解析DNS(dns-prefetch)
+	   <meta http-equiv="x-dns-prefetch-control" content="on"/>
+	   (很多高级浏览器默认a标签是开启了dns预解析，但https协议下很多是关闭了此功能，所以这句话就是指开启预解析DNS)
+	   <link rel="dns-prefetch" href="//host_name_to_prefetch.com">dns-prefetch声明预解析
+</body>
+</html>

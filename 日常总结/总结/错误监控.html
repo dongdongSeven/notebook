@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>错误监控</title>
+	<script>
+		window.addEventListener('error',function(e){
+			console.log(e);
+		},true);
+	</script>
+</head>
+<body>
+	前端错误分类：
+		即时运行错误：代码错误
+			1、try,catch  2、window.onerror(只能捕获即时运行错误，不能捕获资源加载错误)
+		资源加载错误：
+			1、object.onerror 
+			    img/script身上都有onerror事件；此事件不会冒泡，这也是为什么window.onerror不能捕获资源加载错误的原因
+			2、performance.getEntries() 
+			   此API能获取加载的资源，返回一个数组 
+			3、Error事件捕获
+			   onerror不能冒泡，但能使用捕获,window.addEventListener('error',function(){});
+			延伸：跨域的js运行错误跨域捕获吗，错误提示什么，应该怎么处理？
+			1、在script标签增加crossorigin属性  --前端
+			2、设置js资源响应头Access-Control-Allow-Origin:*或指定的域名;  --后台
+	错误的捕获方式：
+	上报错误的基本原理：
+		1、采用Ajax通信的方式上报
+		2、利用Image对象上报
+		<script>
+			(new Image).src='http://baidu.com/test?error=test';//利用此方法发送请求很简单
+		</script>
+	<script src="asdasd.fgfd"></script>
+</body>
+</html>

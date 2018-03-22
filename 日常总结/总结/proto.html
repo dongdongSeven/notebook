@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>proto</title>
+</head>
+<body>
+<script type='text/javascript'>
+//字面量类
+var o1={name:'o1'};
+var o2=new Object({name:'o2'});
+//构造函数类，o3.__proto__指向的是M.prototype
+var M=function(name){this.name=name;}
+var o3=new M('o3');
+//Onject.create，o4是一个空对象，o4.__proto__指向的是P
+var P={name:'p'};
+var o4=Object.create(P);
+
+
+//下面是new的工作原理，先继承原型链，再用call加构造函数内的属性和方法
+var new2=function(fun){
+	var o=Object.create(fun.prototype);
+	var k=fun.call(o);
+	console.log(typeof k,'----'+k);
+	if(typeof k === 'object'){
+		console.log('object');
+		return k;
+	}else{
+		return o;
+	}
+}
+o9=new2(M);
+
+function Parent1(){
+	this.name='parent1';
+}
+function Child1(){
+	this.type='child1';
+}
+Child1.prototype=new Parent1;
+console.log(Child1.prototype.constructor===Child1);
+</script>
+</body>
+</html>
