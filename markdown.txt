@@ -608,3 +608,14 @@ Ajax（同源）,webSocket（不受同源策略的限制）,CORS（支持同源与跨域通信）
 4、WebScoket、
 5、CORS：
    fetch(url,{method:'get'}).then(function(response){}).catch(function(err){})
+
+jquery:核心架构、事件委托、插件机制、兼容性（去jquery浏览量高的看看）
+jquery:
+jquery闭包结构:(function(window,undefined){})(window)
+jquery无new结构
+jquery.fn.extend与jquery.extend：前者拓展后$().xxx，后者$.xxx
+
+if(foo){ ... }     //不够严谨
+if(!!foo){ ... }   //更为严谨，!!可将其他类型的值转换为boolean类型
+
+hook-->hash表
