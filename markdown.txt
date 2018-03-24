@@ -608,3 +608,19 @@ Ajax（同源）,webSocket（不受同源策略的限制）,CORS（支持同源与跨域通信）
 4、WebScoket、
 5、CORS：
    fetch(url,{method:'get'}).then(function(response){}).catch(function(err){})
+
+CSS3:
+background-clip:border-box|padding-box|content-box;//以border|padding|content为裁剪区
+background-origin:border-box|padding-box|content-box;//以border|padding|content的左上角为准定position的x/y
+background-image:url(img1),url(img2);//多重背景图
+background:color position repeat origin clip attachment image;//缩写
+
+background:linear-gradient(to end-level end-vertical/deg,color-stop1 length|percentage,color-stop2 length|percentage,...);//默认从上到下
+background:repeating-linear-gradient(color-stop1 length|percentage,color-stop2 length|percentage,...);//重复渐变
+background:radial-gradient(color-stop1 length|percentage,color-stop2 length|percentage,...);
+background:radial-gradient(shape,color-stop1 length|percentage,color-stop2 length|percentage,...);//shape-->circle,ellipse
+background:radial-gradient(size,color-stop1 length|percentage,color-stop2 length|percentage,...);//尺寸，closest-side/farthest-side/closest-corner/farthest-corner
+background:repeating-radial-gradient(color-stop1 length|percentage,color-stop2 length|percentage,...);//重复渐变
+
+border-image不支持IE和Opare,同时需要设置border:width style;
+border-image:source slice width outset repeat;//source:url();slice:number|%|fill(就是100%);图片边界的内偏移；变宽;outset:lenght|number;外偏移;repeat:stretch|repeat|round|initial|inherit;重复、拉伸、铺满。。
