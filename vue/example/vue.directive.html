@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit">
+	<meta http-equiv="X-AU-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="ViewPort" content="width=device-width,initial-scale=1,mixmum-scale=1,maxmum-scale=1,user-scalable=no">
+	<title>vue.directive 自定义</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<h1>Vue2.0 实例</h1>
+	<hr>
+	<div id="app">
+		<div v-jspang="color">{{num}}</div>
+		<p><button @click="add">ADD</button></p>
+	</div>
+	<p><button onclick="unbind()">解绑</button></p>
+	<script type="text/javascript">
+	function unbind(){
+		app.$destroy();
+	};
+	//5个钩子函数
+	Vue.directive("jspang",{
+		bind:function(el,binding){
+			console.log('1 - bind');
+			el.style.color=binding.value;
+		},
+		inserted:function(el,binding){
+			console.log('2 - inserted');
+		},
+		update:function(el,binding){
+			console.log('3 - update');
+			el.style.color="red";
+		},
+		componentUpdated:function(el,binding){
+			console.log('4 - componentUpdated');
+		},
+		unbind:function(el,binding){
+			console.log('5 - unbind');
+		}
+	});
+	// Vue.directive("jspang",(el,binding)=>{
+	// 	console.log(el);
+	// 	console.log(binding);
+	// 	console.log(binding.name);
+	// 	console.log(binding.value);
+	// 	console.log(binding.expression);
+	// 	el.style.color=binding.value;
+	// });
+		var app=new Vue({
+			el:"#app",
+			data:{
+				num:10,
+				color:"green"
+			},
+			methods:{
+				add(){
+					this.num++;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
