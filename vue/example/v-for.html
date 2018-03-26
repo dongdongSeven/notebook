@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit">
+	<meta http-equiv="X-AU-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="ViewPort" content="width=device-width,initial-scale=1,mixmum-scale=1,maxmum-scale=1,user-scalable=no">
+	<title>vue</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<h1>v-for</h1>
+	<hr>
+	<div id="app">
+		<ul>
+			<li v-for="item in sorItems">
+				{{item}}
+			</li>
+		</ul>
+		<hr>
+		<ul>
+			<li v-for="(student,index) in sortStudents">
+				{{index+1}}:{{student.name}}--{{student.age}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				items:[53,23,76,14,54,36,28],
+				students:[
+					{name:'DD',age:28},
+					{name:'XX',age:23},
+					{name:'BB',age:21},
+					{name:'NN',age:25},
+					{name:'GG',age:26},
+				]
+			},
+			computed:{
+				sorItems(){
+					return this.items.sort(sortNumber);
+				},
+				sortStudents(){
+					return sortByKey(this.students,'age');
+				}
+			}
+		});
+		function sortNumber(a,b){
+			return b-a;
+		}
+		function sortByKey(arr,key){
+			return arr.sort(function(a,b){
+				var x=a[key];
+				var y=b[key];
+				return ((x<y)?-1:((x>y)?1:0));
+			});
+		}
+	</script>
+</body>
+</html>
