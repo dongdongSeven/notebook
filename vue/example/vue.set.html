@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit">
+	<meta http-equiv="X-AU-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="ViewPort" content="width=device-width,initial-scale=1,mixmum-scale=1,maxmum-scale=1,user-scalable=no">
+	<title>vue.set</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<h1>Vue.set 全局操作</h1>
+	<hr>
+	<div id="app">
+		{{count}}
+		<ul>
+			<li v-for="item in arr"></li>
+		</ul>
+	</div>
+	<p><button onclick="add()">add</button></p>
+	<script type="text/javascript">
+		function add(){
+			// Vue.set(outData,"count",2);
+			// app.count++;
+			// outData.count++;
+			// app.arr[1]='dd'; //用数组下标方式改变值或改变数组长度时，vue无法监听，不能实现改变，只能用Vue.set()
+			Vue.set("arr",1,"dd");
+		};
+		var outData={
+			count:1,
+			// goods:"car"
+			arr:['aa','bb','cc']
+		};
+		var app=new Vue({
+			el:"#app",
+			data:outData
+		});
+	</script>
+</body>
+</html>
