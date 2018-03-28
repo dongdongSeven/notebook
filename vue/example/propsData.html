@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit">
+	<meta http-equiv="X-AU-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="ViewPort" content="width=device-width,initial-scale=1,mixmum-scale=1,maxmum-scale=1,user-scalable=no">
+	<title>propsData option</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<h1>propsData option</h1>
+	<hr>
+	<header></header>
+	<script type="text/javascript">
+		var header_a = Vue.extend({
+			template:`<p>{{message}}--{{a}}</p>`,
+			data(){
+				return {
+					message:"hello,I'm header!"
+				}
+			},
+			props:['a']
+		});
+		new header_a({propsData:{a:'red'}}).$mount("header");
+	</script>
+</body>
+</html>

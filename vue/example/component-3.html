@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit">
+	<meta http-equiv="X-AU-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="ViewPort" content="width=device-width,initial-scale=1,mixmum-scale=1,maxmum-scale=1,user-scalable=no">
+	<title>component</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<h1>component-3 模板</h1>
+	<hr>
+	<div id="app">
+		<panda></panda>	
+	</div>
+	<script type="text/javascript">
+		var city = {
+			template:`<div style="color:green;">sichuan of China!</div>`
+		};
+		var pandaComponent={
+			template:`
+			<div>
+				<p>Panda from China!</p>
+				<city></city>
+			</div>
+			`,
+			components:{
+				'city':city
+			}
+		};
+		var app=new Vue({
+			el:"#app",
+			components:{
+				"panda":pandaComponent
+			}
+		});
+	</script>
+</body>
+</html>

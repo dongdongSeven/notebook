@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit">
+	<meta http-equiv="X-AU-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="ViewPort" content="width=device-width,initial-scale=1,mixmum-scale=1,maxmum-scale=1,user-scalable=no">
+	<title>computed option</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<h1>computed option</h1>
+	<hr>
+	<div id="app">
+		<p>{{newPrice}}</p>
+		<ul>
+			<li v-for="item in reverseNews">
+				{{item.title}}---{{item.date}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		//不污染源数据的情况下进行的操作
+		var newList=[
+			{title:'改革创新潮涌动 激活发展新引擎',date:'2018/3/24'},
+			{title:'现行宪法具有划时代意义的一次与时俱进',date:'2018/3/25'},
+			{title:'最高人民法院工作报告  最高人民检察院工作报告',date:'2018/3/25'},
+			{title:'人民网评：把中朝传统友谊不断传承下去发展得更好',date:'2018/3/26'}
+		];
+		var app=new Vue({
+			el:"#app",
+			data:{
+				price:100,
+				newList
+			},
+			computed:{
+				newPrice(){
+					return this.price = "￥" + this.price + "元";
+				},
+				reverseNews(){
+					return this.newList.reverse();
+				}
+			}
+		});
+	</script>
+</body>
+</html>

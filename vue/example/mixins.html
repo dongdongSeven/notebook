@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit">
+	<meta http-equiv="X-AU-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="ViewPort" content="width=device-width,initial-scale=1,mixmum-scale=1,maxmum-scale=1,user-scalable=no">
+	<title>mixins option</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<h1>mixins option混入选项</h1>
+	<hr>
+	<div id="app">
+		{{num}}
+		<p><button @click="add">add</button></p>
+	</div>
+	<script type="text/javascript">
+		//应用场景是所有结构完成了，但零时加入了需求时，可以用混入
+		var addConsole={
+			updated(){
+				console.log('数据发生变化，变成了',this.num);//2
+			}
+		};
+		//全局API混入
+		Vue.mixin({
+			updated(){
+				console.log("我是全局的混入");//1
+			}
+		});
+		var app=new Vue({
+			el:"#app",
+			data:{
+				num:1
+			},
+			updated(){
+				console.log('我是原生的update');//3
+			},
+			methods:{
+				add(){
+					this.num++;
+				}
+			},
+			mixins:[addConsole]
+		});
+	</script>
+</body>
+</html>

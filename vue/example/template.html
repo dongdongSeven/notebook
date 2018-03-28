@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit">
+	<meta http-equiv="X-AU-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="ViewPort" content="width=device-width,initial-scale=1,mixmum-scale=1,maxmum-scale=1,user-scalable=no">
+	<title>template三种写法</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<h1>template三种写法</h1>
+	<hr>
+	<div id="app"></div>
+	<template id="dd2">
+		<h2 style="color: red">我是Template标签模板</h2>
+	</template>
+	<script type="x-template" id="dd3">
+		<h2 style="color: red">我是Script标签模板</h2>
+	</script>
+	<script type="text/javascript">
+		var app=new Vue({
+			el:"#app",
+			data:{
+				message:'hello world'
+			},
+			template:"#dd3"
+			// template:'<h2 style="color:red">我是选项模板</h2>'
+		});
+	</script>
+</body>
+</html>
