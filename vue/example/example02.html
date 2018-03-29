@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit">
+	<meta http-equiv="X-AU-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="ViewPort" content="width=device-width,initial-scale=1,mixmum-scale=1,maxmum-scale=1,user-scalable=no">
+	<title>example2</title>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="../assets/js/jquery.min.js"></script>
+</head>
+<body>
+	<h1>example2 Vue实例 methods demo</h1>
+	<hr>
+	<div id="app"></div>
+	<p><button onclick="destroy()">卸载</button></p>
+	<p><button onclick="reload()">刷新</button></p>
+	<p><button onclick="tick()">更改数据</button></p>
+	<script type="text/javascript">
+		//1、挂载 $mount;2、卸载 $destroy;3、更新 $forceUpdate;4、数据修改 $nextTick;
+		var jspang = Vue.extend({
+			template:`<p>{{message}}</p>`,
+			data(){
+				return{
+					message:"hello,i'm jspang!"
+				}
+			},
+			mounted(){
+				console.log("mounted 被创建!");
+			},
+			destroyed(){
+				console.log("destroyed 销毁之后！");
+			},
+			updated(){
+				console.log("updated 被更新了！");
+			}
+		});
+
+		var vm = new jspang().$mount("#app");
+
+		function destroy(){
+			vm.$destroy();
+		}
+		function reload(){
+			vm.$forceUpdate();
+		}
+		function tick(){
+			vm.message="update message date!";
+			vm.$nextTick(function(){
+				console.log("message更新完成后我被调用了！");
+			});
+		}
+	</script>
+</body>
+</html>

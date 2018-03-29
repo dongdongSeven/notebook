@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit">
+	<meta http-equiv="X-AU-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="ViewPort" content="width=device-width,initial-scale=1,mixmum-scale=1,maxmum-scale=1,user-scalable=no">
+	<title>example03</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<h1>example03 实例方法</h1>
+	<hr>
+	<div id="app">
+		{{num}}
+		<p><button @click="add">ADD</button></p>
+	</div>
+	<p><button onclick="reduce()">reduce</button></p>
+	<p><button onclick="reduceOnce()">reduceOnce</button></p>
+	<p><button onclick="off()">off</button></p>
+	<script type="text/javascript">
+		//在构造器外部给构造器添加方法
+		//1、$on 实例事件;2、$once 事件执行一次;3、$off 关闭事件;4、$emit 触发事件;
+		var app=new Vue({
+			el:"#app",
+			data:{
+				num:1
+			},
+			methods:{
+				add(){
+					this.num++;
+				}
+			}
+		});
+		app.$on("reduce",function(){
+			console.log("执行了reduce方法");
+			this.num--;
+		});
+		app.$once("reduceOnce",function(){
+			console.log("只执行一次的方法！");
+			this.num--;
+		});
+		function reduce(){
+			app.$emit("reduce");
+		}
+		function reduceOnce(){
+			app.$emit("reduceOnce");
+		}
+		function off(){
+			app.$off("reduce");
+		}
+	</script>
+</body>
+</html>
