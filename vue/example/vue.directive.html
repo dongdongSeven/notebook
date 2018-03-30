@@ -21,46 +21,46 @@
 	function unbind(){
 		app.$destroy();
 	};
-	//5个钩子函数
-	Vue.directive("jspang",{
-		bind:function(el,binding){
-			console.log('1 - bind');
-			el.style.color=binding.value;
+	// //5个钩子函数
+	// Vue.directive("jspang",{
+	// 	bind:function(el,binding){
+	// 		console.log('1 - bind');
+	// 		el.style.color=binding.value;
+	// 	},
+	// 	inserted:function(el,binding){
+	// 		console.log('2 - inserted');
+	// 	},
+	// 	update:function(el,binding){
+	// 		console.log('3 - update');
+	// 		el.style.color="red";
+	// 	},
+	// 	componentUpdated:function(el,binding){
+	// 		console.log('4 - componentUpdated');
+	// 	},
+	// 	unbind:function(el,binding){
+	// 		console.log('5 - unbind');
+	// 	}
+	// });
+	Vue.directive("jspang",(el,binding)=>{
+		console.log(el);
+		console.log(binding);
+		console.log(binding.name);
+		console.log(binding.value);
+		console.log(binding.expression);
+		el.style.color=binding.value;
+	});
+	var app=new Vue({
+		el:"#app",
+		data:{
+			num:10,
+			color:"green"
 		},
-		inserted:function(el,binding){
-			console.log('2 - inserted');
-		},
-		update:function(el,binding){
-			console.log('3 - update');
-			el.style.color="red";
-		},
-		componentUpdated:function(el,binding){
-			console.log('4 - componentUpdated');
-		},
-		unbind:function(el,binding){
-			console.log('5 - unbind');
+		methods:{
+			add(){
+				this.num++;
+			}
 		}
 	});
-	// Vue.directive("jspang",(el,binding)=>{
-	// 	console.log(el);
-	// 	console.log(binding);
-	// 	console.log(binding.name);
-	// 	console.log(binding.value);
-	// 	console.log(binding.expression);
-	// 	el.style.color=binding.value;
-	// });
-		var app=new Vue({
-			el:"#app",
-			data:{
-				num:10,
-				color:"green"
-			},
-			methods:{
-				add(){
-					this.num++;
-				}
-			}
-		});
 	</script>
 </body>
 </html>

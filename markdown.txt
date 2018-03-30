@@ -637,3 +637,14 @@ background:repeating-radial-gradient(color-stop1 length|percentage,color-stop2 l
 border-image不支持IE和Opare,同时需要设置border:width style;
 border-image:source slice width outset repeat;//source:url();slice:number|%|fill(就是100%);图片边界的内偏移；变宽;outset:lenght|number;外偏移;repeat:stretch|repeat|round|initial|inherit;重复、拉伸、铺满。。
 
+1、Vue-router入门
+2、Vue-router配置子路由
+3、vue-router如何参数传递
+4、单页面多路由区操作
+5、vue-router利用url传递参数，路由中可以加正则表达式
+6、vue-router的重定向，带参数与不带参数
+7、alias别名的使用
+8、路由过度动画
+9、mode的作用和404页面的处理
+10、路由中的钩子
+11、编程式路由

@@ -13,7 +13,8 @@
 	<h1>v-pre & v-cloak & v-once</h1>
 	<hr>
 	<div id="app">
-		<div v-pre="">{{message}}</div>
+		<!-- 跳过这个元素和它的子元素的编译过程 -->
+		<div v-pre>{{message}}</div>
 		<div v-cloak>渲染完成后，才显示</div>
 		<div v-once>{{message}}</div>
 		<div>
@@ -25,7 +26,7 @@
 		var app=new Vue({
 			el:"#app",
 			data:{
-				message:'message'
+				message:'dongdong'
 			}
 		});
 	</script>

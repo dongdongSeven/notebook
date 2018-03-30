@@ -14,10 +14,11 @@
 	<h1>example1 methods demo</h1>
 	<hr>
 	<div id="app">
-		{{message}}
+		<h2>{{message}}</h2>
 	</div>
+	<p><button onclick="app.test()">test</button></p>
+	<p><button onclick="app.$forceUpdate()">updated</button></p>
 	<script type="text/javascript">
-		//$只能在声明周期函数中用
 		var app=new Vue({
 			el:"#app",
 			data:{
@@ -27,9 +28,15 @@
 				$("#app").html("我是jquery!");
 			},
 			methods:{
+				test(){
+					$("#app").html("test");
+				},
 				add(){
 					console.log('调用了构造器内部的ADD方法！');
 				}
+			},
+			updated(){
+				console.log("updated!");
 			}
 		});
 		app.add();

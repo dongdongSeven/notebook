@@ -13,7 +13,7 @@
 	<h1>Slot content extend Demo</h1>
 	<hr>
 	<div id="app">
-		<jspang>
+		<jspang @sw="showSonMsg">
 			<span slot="bolgUrl">{{jspangData.bolgUrl}}</span>
 			<span slot="netName">panda</span>
 			<span slot="skill">{{jspangData.skill}}</span>
@@ -24,11 +24,17 @@
 			<p>博客地址：<slot name="bolgUrl"></slot></p>
 			<p>网名：<slot name="netName"></slot></p>
 			<p>技术类型：<slot name="skill"></slot></p>
+			<button @click="sonSayToFather">sonSayToFather1</button>
 		</div>
 	</template>
 	<script type="text/javascript">
 		var jspang={
-			template:"#tep"
+			template:"#tep",
+			methods:{
+				sonSayToFather(){
+					this.$emit("sw","son's words");
+				}
+			}
 		}
 		var app=new Vue({
 			el:"#app",
@@ -41,6 +47,11 @@
 			},
 			components:{
 				"jspang":jspang
+			},
+			methods:{
+				showSonMsg(...data){
+					console.log(data);
+				}
 			}
 		});
 	</script>

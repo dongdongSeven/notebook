@@ -33,27 +33,27 @@
 					this.wendu-=5;
 				}
 			},
-			// watch:{
-			// 	wendu(newVal,oldVal){
-			// 		if(newVal>=26){
-			// 			this.chuanyi=chuanyiarray[0];
-			// 		}else if(newVal<26&&newVal>0){
-			// 			this.chuanyi=chuanyiarray[1];
-			// 		}else{
-			// 			this.chuanyi=chuanyiarray[2];
-			// 		}
-			// 	}
-			// }
-		});
-		app.$watch("wendu",function(newVal,oldVal){//vue内置的方法前面都要加$
-			if(newVal>=26){
-				this.chuanyi=chuanyiarray[0];
-			}else if(newVal<26&&newVal>0){
-				this.chuanyi=chuanyiarray[1];
-			}else{
-				this.chuanyi=chuanyiarray[2];
+			watch:{
+				wendu(newVal,oldVal){
+					if(newVal>=26){
+						this.chuanyi=chuanyiarray[0];
+					}else if(newVal<26&&newVal>0){
+						this.chuanyi=chuanyiarray[1];
+					}else{
+						this.chuanyi=chuanyiarray[2];
+					}
+				}
 			}
 		});
+		// app.$watch("wendu",function(newVal,oldVal){//vue内置的方法前面都要加$
+		// 	if(newVal>=26){
+		// 		this.chuanyi=chuanyiarray[0];
+		// 	}else if(newVal<26&&newVal>0){
+		// 		this.chuanyi=chuanyiarray[1];
+		// 	}else{
+		// 		this.chuanyi=chuanyiarray[2];
+		// 	}
+		// });
 	</script>
 </body>
 </html>
