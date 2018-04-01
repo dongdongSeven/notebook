@@ -648,3 +648,5 @@ border-image:source slice width outset repeat;//source:url();slice:number|%|fill
 9、mode的作用和404页面的处理
 10、路由中的钩子
 11、编程式路由
+
+生产环境需要vuex npm i vuex --save

@@ -7,7 +7,7 @@ import hi2 from '@/components/hi2'
 import H1 from '@/components/H1'
 import H2 from '@/components/H2'
 import Params from '@/components/Params'
-import Error from '@/components/Error'
+import Errors from '@/components/Errors'
 
 Vue.use(Router)
 
@@ -77,7 +77,7 @@ export default new Router({
     },
     {
         path:'*',
-        component:Error
+        component:Errors
     }
   ]
 })

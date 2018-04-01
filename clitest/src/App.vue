@@ -16,8 +16,7 @@
       <router-link to="/jspang">jspang</router-link>
       <!-- 下面返回主页是坑，现在已经修复 -->
       <router-link to="/home1">home1</router-link>
-      <router-link to="/65165556
-      ">我是瞎写的</router-link>
+      <router-link to="/65165556">我是瞎写的</router-link>
     </div>
     <p>{{$route.name}}</p>
     <transition name="fade" mode="out-in">
