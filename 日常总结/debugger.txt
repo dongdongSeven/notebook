@@ -1,0 +1,7 @@
+1、console.time('projectName')
+     ...
+     console.timeEnd('projectName');
+2、console.trace('随便命名');  能追溯调用层级，栈堆情况 
+3、快速查找元素或样式：
+     $('元素，css选择器')  --  查找第一个
+     $$('元素，css选择器')  --  查找全部
