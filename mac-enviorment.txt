@@ -1,0 +1,20 @@
+Mac 环境安装（最好按下列顺序安装）
+1、安装JDK
+2、安装gradle --- 配置环境变量
+3、安装SDK(只需安装Android Studio) —- 配置环境变量
+4、安装brew home
+5、安装nvm (node版本管理)
+6、安装node
+7、安装angular/ionic/cordova
+VSCode插件
+1、angular snippets
+2、auto rename tag
+3、beautify
+4、bracket pair colorizer
+5、chinese(Simplified) Language…
+6、debugger for chrome
+7、git history
+8、import cost
+9、path intelligence
+10、prettier - code formatter
+11、vscode-icons
