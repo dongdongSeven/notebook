@@ -1,0 +1,32 @@
+.input{
+    border: 3px solid #ae7000;
+}
+
+/*
+xxx-enter
+xxx-enter-active
+xxx-enter-done
+xxx-exit
+xxx-exit-active
+xxx-exit-done
+*/
+.boss-text-enter{
+    opacity: 0;
+}
+.boss-text-enter-active{
+    opacity: .5;
+    transition: opacity 2s ease-in;
+}
+.boss-text-enter-done{
+    opacity: 1;
+}
+.boss-text-exit{
+    opacity: 1;
+}
+.boss-text-exit-active{
+    opacity: .5;
+    transition: opacity 2s ease-in;
+}
+.boss-text-exit-done{
+    opacity: 0;
+}
